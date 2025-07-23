@@ -28,28 +28,23 @@
         .hero-header {
             position: relative;
             width: 100%;
-            min-height: 60vh;
+            height: 60vh; /* Fixed height for the hero section */
             overflow: hidden;
-            display: flex; /* Added to center content within hero */
-            flex-direction: column; /* Added for vertical stacking */
-            justify-content: center; /* Added to center content within hero */
-            align-items: center; /* Added to center content within hero */
-            text-align: center; /* Added for text alignment */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
             color: var(--highlight);
         }
-        .hero-banner {
-            position: absolute; /* Changed to absolute to allow content to sit on top */
+        .hero-banner-img {
+            position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%; /* Changed to 100% to fill hero-header */
-            overflow: hidden;
-        }
-        .hero-banner img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             filter: brightness(0.6);
+            z-index: 0; /* Ensure image is at the back */
         }
         .hero-overlay {
             position: absolute;
@@ -58,7 +53,7 @@
             z-index: 1; /* Ensure overlay is below content but above image */
         }
         .hero-content {
-            position: relative; /* Changed to relative to be z-index 2 and allow centering */
+            position: relative;
             z-index: 2; /* Ensure content is above overlay */
             color: #fff;
             text-align: center;
@@ -78,13 +73,13 @@
             position: sticky;
             top: 0;
             width: 100%;
-            background: rgba(24,24,24,0.95);
+            background: var(--nav); /* Use the --nav variable */
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 32px; /* Adjusted padding */
+            padding: 15px 32px;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Add subtle shadow */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
         .nav-left {
             display: flex;
@@ -92,7 +87,7 @@
             gap: 24px;
         }
         .site-title {
-            font-size: 1.8rem; /* Adjusted for better visibility */
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--highlight);
             margin-right: 24px;
@@ -103,14 +98,15 @@
             font-weight: 500;
             font-size: 1.1rem;
             position: relative;
-            padding: 5px 0; /* Add padding for clickable area */
+            padding: 5px 0;
+            transition: color 0.2s; /* Added transition for smooth hover */
         }
         .main-nav a::after {
             content: '';
             position: absolute;
             width: 100%;
             height: 2px;
-            bottom: -5px; /* Adjust based on padding */
+            bottom: -5px;
             left: 0;
             background: var(--link-hover);
             transform: scaleX(0);
@@ -137,11 +133,11 @@
         main {
             position: relative;
             z-index: 10;
-            background: var(--bg); /* Use var for consistency */
-            margin-top: -100px; /* Adjusted margin to better overlap header */
+            background: var(--bg);
+            margin-top: -100px; /* Adjust to control how much it overlaps the banner */
             border-radius: 18px 18px 0 0;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.2); /* Adjusted shadow for bottom */
-            padding-top: 80px; /* Adjust padding to make space for overlapping content */
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+            padding-top: 80px; /* Padding inside main to ensure content starts below the curve */
         }
         
         section {
@@ -197,7 +193,7 @@
         }
         .contact-links a:hover {
             text-decoration: underline;
-            color: var(--link-hover); /* Use new variable */
+            color: var(--link-hover);
         }
         .contact-links i {
             margin-right: 6px;
@@ -209,67 +205,71 @@
         }
         .resume-link:hover {
             text-decoration: underline;
-            color: var(--link-hover); /* Use new variable */
+            color: var(--link-hover);
         }
         footer {
             text-align: center;
             font-size: 1rem;
             color: var(--muted);
             margin-top: 30px;
-            padding: 20px 0; /* Add vertical padding */
+            padding: 20px 0;
             border-top: 1px solid var(--accent);
             background: var(--nav);
         }
 
         /* Responsive adjustments */
         @media (max-width: 800px) {
-            .hero-content h1 { font-size: 2.5rem; } /* Slightly reduced for better fit */
-            .hero-content p { font-size: 1.2rem; } /* Slightly reduced for better fit */
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content p { font-size: 1.2rem; }
+            
             .main-nav { 
                 flex-direction: column; 
-                padding: 10px 8px; /* Adjusted padding for smaller screens */
+                padding: 10px 8px;
             }
             .nav-left { 
                 flex-wrap: wrap; 
-                gap: 10px; /* Adjusted gap for smaller screens */
-                justify-content: center; /* Center items when wrapped */
-                margin-bottom: 10px; /* Space between nav-left and nav-right */
+                gap: 10px;
+                justify-content: center;
+                margin-bottom: 10px;
             }
             .site-title {
-                margin-right: 0; /* Remove extra margin on smaller screens */
-                margin-bottom: 10px; /* Add space below title when stacked */
-                width: 100%; /* Allow title to take full width */
+                margin-right: 0;
+                margin-bottom: 10px;
+                width: 100%;
+                text-align: center; /* Center the title when stacked */
             }
             .main-nav a { 
-                margin: 0 8px; /* Adjusted margin for nav links */
-                font-size: 1rem; /* Smaller font size for nav links */
+                margin: 0 8px;
+                font-size: 1rem;
             }
             .nav-right {
-                justify-content: center; /* Center icons on smaller screens */
-                width: 100%; /* Allow icons to take full width */
+                justify-content: center;
+                width: 100%;
             }
             section { 
-                padding: 25px 20px; /* Adjusted section padding */
-                margin: 25px 15px; /* Adjusted section margin */
+                padding: 25px 20px;
+                margin: 25px 15px;
             }
-            h2 { font-size: 1.8rem; } /* Adjusted heading size */
-            h3 { font-size: 1.1rem; } /* Adjusted sub-heading size */
+            h2 { font-size: 1.8rem; }
+            h3 { font-size: 1.1rem; }
             .skills-list li {
-                padding: 5px 12px; /* Smaller padding for skill tags */
-                font-size: 0.9rem; /* Smaller font size for skill tags */
+                padding: 5px 12px;
+                font-size: 0.9rem;
             }
             .contact-links a {
-                margin-right: 10px; /* Adjusted margin for contact links */
-                font-size: 1rem; /* Smaller font size for contact links */
+                margin-right: 10px;
+                font-size: 1rem;
             }
+            /* .info-row (if it was used in the current structure) */
             .info-row { 
                 flex-direction: column; 
                 gap: 6px; 
-                align-items: center; /* Center info items */
+                align-items: center;
             }
         }
 
         @media (max-width: 480px) {
+            .hero-header { height: 50vh; } /* Slightly reduce banner height on very small screens */
             .hero-content h1 { font-size: 2rem; }
             .hero-content p { font-size: 0.9rem; }
             .main-nav {
@@ -296,19 +296,17 @@
 </head>
 <body>
     <header class="hero-header">
-        <div class="hero-banner">
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80" alt="Engineering Banner">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <h1>Joyal Jojo</h1>
-                <p>Mechanical Engineering Student | Melbourne, Australia</p>
-            </div>
+        <img class="hero-banner-img" src="http://googleusercontent.com/file_content/0" alt="Engineering Banner">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Joyal Jojo</h1>
+            <p>Mechanical Engineering Student | Melbourne, Australia</p>
         </div>
     </header>
+
     <nav class="main-nav">
         <div class="nav-left">
-            <span class="site-title">Joyal Jojo</span>
-            <a href="#profile">Profile</a>
+            <span class="site-title">Joyal Jojo</span> <a href="#profile">Profile</a>
             <a href="#education">Education</a>
             <a href="#experience">Experience</a>
             <a href="#projects">Projects</a>
@@ -321,8 +319,9 @@
             <a href="https://www.linkedin.com/in/joyal-jojo" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
             <a href="mailto:joyaljojo.connect@gmail.com"><i class="fa-solid fa-envelope"></i></a>
             <a href="tel:0449959100"><i class="fa-solid fa-phone"></i></a>
-            </div>
+        </div>
     </nav>
+
     <main>
         <section id="profile">
             <h2>Profile</h2>
@@ -501,8 +500,30 @@
         const navLinks = document.querySelectorAll('.main-nav a'); // Target main-nav links
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
+                // Remove 'active' from all links
                 navLinks.forEach(lnk => lnk.classList.remove('active'));
+                // Add 'active' to the clicked link
                 this.classList.add('active');
+            });
+        });
+
+        // Optional: Highlight active nav link on scroll
+        const sections = document.querySelectorAll('section');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 150) { // -150px offset to activate sooner
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.href.includes(current)) {
+                    link.classList.add('active');
+                }
             });
         });
     </script>

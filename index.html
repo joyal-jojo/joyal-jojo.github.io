@@ -14,6 +14,7 @@
             --accent: #111;
             --highlight: #fff;
             --nav: #1a1a1a;
+            --link-hover: #60a5fa; /* New variable for hover color */
         }
         body {
             background: var(--bg);
@@ -22,65 +23,127 @@
             margin: 0;
             min-height: 100vh;
         }
-        header {
-            text-align: center;
-            padding: 48px 0 24px 0;
-            background: var(--nav);
+        
+        /* Hero Header (Banner and Overlay) Styles */
+        .hero-header {
+            position: relative;
+            width: 100%;
+            min-height: 60vh;
+            overflow: hidden;
+            display: flex; /* Added to center content within hero */
+            flex-direction: column; /* Added for vertical stacking */
+            justify-content: center; /* Added to center content within hero */
+            align-items: center; /* Added to center content within hero */
+            text-align: center; /* Added for text alignment */
             color: var(--highlight);
-            font-size: 2.5rem;
+        }
+        .hero-banner {
+            position: absolute; /* Changed to absolute to allow content to sit on top */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%; /* Changed to 100% to fill hero-header */
+            overflow: hidden;
+        }
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6);
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1; /* Ensure overlay is below content but above image */
+        }
+        .hero-content {
+            position: relative; /* Changed to relative to be z-index 2 and allow centering */
+            z-index: 2; /* Ensure content is above overlay */
+            color: #fff;
+            text-align: center;
+        }
+        .hero-content h1 {
+            font-size: 4rem;
             font-weight: 700;
-            letter-spacing: 1px;
+            margin: 0 0 16px 0;
         }
-        header h1 {
-            margin: 0;
-            font-size: 2.8rem;
-            font-weight: 700;
+        .hero-content p {
+            font-size: 1.5rem;
+            color: #e0e0e0;
         }
-        header p {
-            font-size: 1.15rem;
-            color: var(--muted);
-            margin: 12px 0 0 0;
-        }
-        .info-row {
-            justify-content: center;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 18px;
-            margin-bottom: 10px;
-            color: var(--muted);
-            font-size: 1rem;
-        }
-        .info-row span, .info-row a {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--muted);
-        }
-        nav {
-            background: var(--nav);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0 0 0 0;
-            font-size: 1.2rem;
-            border-bottom: 1px solid #222;
+
+        /* Main Navigation Styles */
+        .main-nav {
             position: sticky;
             top: 0;
+            width: 100%;
+            background: rgba(24,24,24,0.95);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 32px; /* Adjusted padding */
             z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Add subtle shadow */
         }
-        nav a {
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        .site-title {
+            font-size: 1.8rem; /* Adjusted for better visibility */
+            font-weight: 700;
+            color: var(--highlight);
+            margin-right: 24px;
+        }
+        .main-nav a {
             color: var(--highlight);
             text-decoration: none;
-            font-weight: 600;
-            margin: 0 18px;
-            padding: 18px 0 14px 0;
-            border-bottom: 3px solid transparent;
-            transition: border-color 0.2s, color 0.2s;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 5px 0; /* Add padding for clickable area */
         }
-        nav a.active, nav a:hover {
-            border-bottom: 3px solid var(--highlight);
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -5px; /* Adjust based on padding */
+            left: 0;
+            background: var(--link-hover);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        .main-nav a:hover::after, .main-nav a.active::after {
+            transform: scaleX(1);
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .nav-right a {
             color: var(--highlight);
+            font-size: 1.3rem;
+            transition: color 0.2s;
         }
+        .nav-right a:hover {
+            color: var(--link-hover);
+        }
+
+        /* Main content overlay effect */
+        main {
+            position: relative;
+            z-index: 10;
+            background: var(--bg); /* Use var for consistency */
+            margin-top: -100px; /* Adjusted margin to better overlap header */
+            border-radius: 18px 18px 0 0;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.2); /* Adjusted shadow for bottom */
+            padding-top: 80px; /* Adjust padding to make space for overlapping content */
+        }
+        
         section {
             max-width: 700px;
             margin: 48px auto;
@@ -134,7 +197,7 @@
         }
         .contact-links a:hover {
             text-decoration: underline;
-            color: var(--muted);
+            color: var(--link-hover); /* Use new variable */
         }
         .contact-links i {
             margin-right: 6px;
@@ -146,243 +209,93 @@
         }
         .resume-link:hover {
             text-decoration: underline;
-            color: var(--muted);
+            color: var(--link-hover); /* Use new variable */
         }
         footer {
             text-align: center;
             font-size: 1rem;
             color: var(--muted);
             margin-top: 30px;
-            padding-top: 20px;
+            padding: 20px 0; /* Add vertical padding */
             border-top: 1px solid var(--accent);
             background: var(--nav);
         }
-        @media (max-width: 600px) {
-            nav a { margin: 0 10px; font-size: 1rem; }
-            section { padding: 18px; margin: 15px 6px; }
-            .skills-list { gap: 8px; }
-            .info-row { flex-direction: column; gap: 6px; }
-            header h1 { font-size: 2rem; }
-            h2 { font-size: 1.3rem; }
-        }
-        .hero-header {
-            position: relative;
-            overflow: hidden;
-            height: 60vh;
-            display: flex;
-            flex-direction: column;            /* Banner and overlay styles */
-            .hero-header {
-                position: relative;
-                width: 100%;
-                min-height: 60vh;
-                overflow: hidden;
+
+        /* Responsive adjustments */
+        @media (max-width: 800px) {
+            .hero-content h1 { font-size: 2.5rem; } /* Slightly reduced for better fit */
+            .hero-content p { font-size: 1.2rem; } /* Slightly reduced for better fit */
+            .main-nav { 
+                flex-direction: column; 
+                padding: 10px 8px; /* Adjusted padding for smaller screens */
             }
-            .hero-banner {
-                position: relative;
-                width: 100%;
-                height: 60vh;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .hero-banner img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                filter: brightness(0.6);
-            }
-            .hero-overlay {
-                position: absolute;
-                top: 0; left: 0; right: 0; bottom: 0;
-                background: rgba(0,0,0,0.5);
-            }
-            .hero-content {
-                position: absolute;
-                top: 50%; left: 50%;
-                transform: translate(-50%, -50%);
-                color: #fff;
-                text-align: center;
-            }
-            .hero-content h1 {
-                font-size: 4rem;
-                font-weight: 700;
-                margin: 0 0 16px 0;
-            }
-            .hero-content p {
-                font-size: 1.5rem;
-                color: #e0e0e0;
-            }
-            
-            /* Navigation styles */
-            .main-nav {
-                position: sticky;
-                top: 0;
-                width: 100%;
-                background: rgba(24,24,24,0.95);
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 0 32px;
-                z-index: 100;
-            }
-            .nav-left {
-                display: flex;
-                align-items: center;
-                gap: 24px;
+            .nav-left { 
+                flex-wrap: wrap; 
+                gap: 10px; /* Adjusted gap for smaller screens */
+                justify-content: center; /* Center items when wrapped */
+                margin-bottom: 10px; /* Space between nav-left and nav-right */
             }
             .site-title {
-                font-size: 1.5rem;
-                font-weight: 700;
-                color: #fff;
-                margin-right: 24px;
+                margin-right: 0; /* Remove extra margin on smaller screens */
+                margin-bottom: 10px; /* Add space below title when stacked */
+                width: 100%; /* Allow title to take full width */
             }
-            .main-nav a {
-                color: #fff;
-                text-decoration: none;
-                font-weight: 500;
-                font-size: 1.1rem;
-                margin-right: 12px;
-                transition: color 0.2s;
-            }
-            .main-nav a:hover {
-                color: #60a5fa;
+            .main-nav a { 
+                margin: 0 8px; /* Adjusted margin for nav links */
+                font-size: 1rem; /* Smaller font size for nav links */
             }
             .nav-right {
-                display: flex;
-                align-items: center;
-                gap: 18px;
+                justify-content: center; /* Center icons on smaller screens */
+                width: 100%; /* Allow icons to take full width */
+            }
+            section { 
+                padding: 25px 20px; /* Adjusted section padding */
+                margin: 25px 15px; /* Adjusted section margin */
+            }
+            h2 { font-size: 1.8rem; } /* Adjusted heading size */
+            h3 { font-size: 1.1rem; } /* Adjusted sub-heading size */
+            .skills-list li {
+                padding: 5px 12px; /* Smaller padding for skill tags */
+                font-size: 0.9rem; /* Smaller font size for skill tags */
+            }
+            .contact-links a {
+                margin-right: 10px; /* Adjusted margin for contact links */
+                font-size: 1rem; /* Smaller font size for contact links */
+            }
+            .info-row { 
+                flex-direction: column; 
+                gap: 6px; 
+                align-items: center; /* Center info items */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 { font-size: 2rem; }
+            .hero-content p { font-size: 0.9rem; }
+            .main-nav {
+                padding: 10px 5px;
+            }
+            .nav-left {
+                gap: 8px;
+            }
+            .main-nav a {
+                margin: 0 5px;
+                font-size: 0.9rem;
             }
             .nav-right a {
-                color: #fff;
-                font-size: 1.3rem;
-                transition: color 0.2s;
+                font-size: 1.1rem;
             }
-            .nav-right a:hover {
-                color: #60a5fa;
+            section {
+                padding: 20px 15px;
+                margin: 20px 10px;
             }
-            
-            /* Main content overlay effect */
-            main {
-                position: relative;
-                z-index: 10;
-                background: #181818;
-                margin-top: -120px;
-                border-radius: 18px 18px 0 0;
-                box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-                padding-top: 120px;
-            }
-            @media (max-width: 800px) {
-                .hero-content h1 { font-size: 2.2rem; }
-                .hero-content p { font-size: 1rem; }
-                .main-nav { flex-direction: column; padding: 0 8px; }
-                .nav-left { flex-wrap: wrap; gap: 12px; }
-            }
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--highlight);
-        }
-        .hero-banner {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        .hero-banner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.7;
-        }
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-        .main-nav {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .nav-left {
-            display: flex;
-            align-items: center;
-        }
-        .site-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-right: 40px;
-            color: var(--highlight);
-        }
-        .nav-left a {
-            color: var(--highlight);
-            text-decoration: none;
-            margin-right: 24px;
-            font-weight: 500;
-            position: relative;
-        }
-        .nav-left a::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background: var(--highlight);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-        .nav-left a:hover::after, .nav-left a.active::after {
-            transform: scaleX(1);
-        }
-        .nav-right a {
-            color: var(--highlight);
-            text-decoration: none;
-            margin-left: 18px;
-            font-size: 1.2rem;
-        }
-        .nav-right a:hover {
-            color: var(--muted);
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
     <header class="hero-header">
-        <nav class="main-nav">
-            <div class="nav-left">
-                <span class="site-title">Joyal Jojo</span>
-                <a href="#profile">Profile</a>
-                <a href="#education">Education</a>
-                <a href="#experience">Experience</a>
-                <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
-                <a href="#volunteer">Volunteer</a>
-                <a href="#certifications">Certifications</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <div class="nav-right">
-                <a href="https://www.linkedin.com/in/joyal-jojo" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="mailto:joyaljojo.connect@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-                <a href="tel:0449959100"><i class="fa-solid fa-phone"></i></a>
-                <!-- Add more icons as needed -->
-            </div>
-        </nav>
         <div class="hero-banner">
             <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80" alt="Engineering Banner">
             <div class="hero-overlay"></div>
@@ -392,6 +305,24 @@
             </div>
         </div>
     </header>
+    <nav class="main-nav">
+        <div class="nav-left">
+            <span class="site-title">Joyal Jojo</span>
+            <a href="#profile">Profile</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#volunteer">Volunteer</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-right">
+            <a href="https://www.linkedin.com/in/joyal-jojo" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="mailto:joyaljojo.connect@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+            <a href="tel:0449959100"><i class="fa-solid fa-phone"></i></a>
+            </div>
+    </nav>
     <main>
         <section id="profile">
             <h2>Profile</h2>
@@ -520,7 +451,6 @@
                 <li><i class="fa-solid fa-diagram-project"></i> Project Management</li>
                 <li><i class="fa-solid fa-user-tie"></i> Leadership</li>
                 <li><i class="fa-solid fa-chart-pie"></i> Customer Analytics</li>
-    
             </ul>
         </section>
 
@@ -568,14 +498,13 @@
     </footer>
     <script>
         // Navigation active link highlight
-        const navLinks = document.querySelectorAll('nav a');
+        const navLinks = document.querySelectorAll('.main-nav a'); // Target main-nav links
         navLinks.forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', function() {
                 navLinks.forEach(lnk => lnk.classList.remove('active'));
-                link.classList.add('active');
+                this.classList.add('active');
             });
         });
     </script>
 </body>
 </html>
-

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +15,6 @@
             --accent: #111;
             --highlight: #fff;
             --nav: #1a1a1a;
-            --link-hover: #60a5fa; /* New variable for hover color */
         }
         body {
             background: var(--bg);
@@ -23,123 +23,65 @@
             margin: 0;
             min-height: 100vh;
         }
-        
-        /* Hero Header (Banner and Overlay) Styles */
-        .hero-header {
-            position: relative;
-            width: 100%;
-            height: 60vh; /* Fixed height for the hero section */
-            overflow: hidden;
+        header {
+            text-align: center;
+            padding: 48px 0 24px 0;
+            background: var(--nav);
+            color: var(--highlight);
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+        header p {
+            font-size: 1.15rem;
+            color: var(--muted);
+            margin: 12px 0 0 0;
+        }
+        .info-row {
+            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-bottom: 10px;
+            color: var(--muted);
+            font-size: 1rem;
+        }
+        .info-row span, .info-row a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--muted);
+        }
+        nav {
+            background: var(--nav);
             display: flex;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            color: var(--highlight);
-        }
-        .hero-banner-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.6);
-            z-index: 0; /* Ensure image is at the back */
-        }
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.5);
-            z-index: 1; /* Ensure overlay is below content but above image */
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2; /* Ensure content is above overlay */
-            color: #fff;
-            text-align: center;
-        }
-        .hero-content h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            margin: 0 0 16px 0;
-        }
-        .hero-content p {
-            font-size: 1.5rem;
-            color: #e0e0e0;
-        }
-
-        /* Main Navigation Styles */
-        .main-nav {
+            padding: 0 0 0 0;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #222;
             position: sticky;
             top: 0;
-            width: 100%;
-            background: var(--nav); /* Use the --nav variable */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 32px;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
-        .nav-left {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-        .site-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--highlight);
-            margin-right: 24px;
-        }
-        .main-nav a {
+        nav a {
             color: var(--highlight);
             text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
-            position: relative;
-            padding: 5px 0;
-            transition: color 0.2s; /* Added transition for smooth hover */
+            font-weight: 600;
+            margin: 0 18px;
+            padding: 18px 0 14px 0;
+            border-bottom: 3px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
         }
-        .main-nav a::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background: var(--link-hover);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-        .main-nav a:hover::after, .main-nav a.active::after {
-            transform: scaleX(1);
-        }
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-        }
-        .nav-right a {
+        nav a.active, nav a:hover {
+            border-bottom: 3px solid var(--highlight);
             color: var(--highlight);
-            font-size: 1.3rem;
-            transition: color 0.2s;
         }
-        .nav-right a:hover {
-            color: var(--link-hover);
-        }
-
-        /* Main content overlay effect */
-        main {
-            position: relative;
-            z-index: 10;
-            background: var(--bg);
-            margin-top: -100px; /* Adjust to control how much it overlaps the banner */
-            border-radius: 18px 18px 0 0;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
-            padding-top: 80px; /* Padding inside main to ensure content starts below the curve */
-        }
-        
         section {
             max-width: 700px;
             margin: 48px auto;
@@ -193,7 +135,7 @@
         }
         .contact-links a:hover {
             text-decoration: underline;
-            color: var(--link-hover);
+            color: var(--muted);
         }
         .contact-links i {
             margin-right: 6px;
@@ -205,123 +147,252 @@
         }
         .resume-link:hover {
             text-decoration: underline;
-            color: var(--link-hover);
+            color: var(--muted);
         }
         footer {
             text-align: center;
             font-size: 1rem;
             color: var(--muted);
             margin-top: 30px;
-            padding: 20px 0;
+            padding-top: 20px;
             border-top: 1px solid var(--accent);
             background: var(--nav);
         }
-
-        /* Responsive adjustments */
-        @media (max-width: 800px) {
-            .hero-content h1 { font-size: 2.5rem; }
-            .hero-content p { font-size: 1.2rem; }
-            
-            .main-nav { 
-                flex-direction: column; 
-                padding: 10px 8px;
-            }
-            .nav-left { 
-                flex-wrap: wrap; 
-                gap: 10px;
-                justify-content: center;
-                margin-bottom: 10px;
-            }
-            .site-title {
-                margin-right: 0;
-                margin-bottom: 10px;
-                width: 100%;
-                text-align: center; /* Center the title when stacked */
-            }
-            .main-nav a { 
-                margin: 0 8px;
-                font-size: 1rem;
-            }
-            .nav-right {
-                justify-content: center;
-                width: 100%;
-            }
-            section { 
-                padding: 25px 20px;
-                margin: 25px 15px;
-            }
-            h2 { font-size: 1.8rem; }
-            h3 { font-size: 1.1rem; }
-            .skills-list li {
-                padding: 5px 12px;
-                font-size: 0.9rem;
-            }
-            .contact-links a {
-                margin-right: 10px;
-                font-size: 1rem;
-            }
-            /* .info-row (if it was used in the current structure) */
-            .info-row { 
-                flex-direction: column; 
-                gap: 6px; 
-                align-items: center;
-            }
+        @media (max-width: 600px) {
+            nav a { margin: 0 10px; font-size: 1rem; }
+            section { padding: 18px; margin: 15px 6px; }
+            .skills-list { gap: 8px; }
+            .info-row { flex-direction: column; gap: 6px; }
+            header h1 { font-size: 2rem; }
+            h2 { font-size: 1.3rem; }
         }
-
-        @media (max-width: 480px) {
-            .hero-header { height: 50vh; } /* Slightly reduce banner height on very small screens */
-            .hero-content h1 { font-size: 2rem; }
-            .hero-content p { font-size: 0.9rem; }
+        .hero-header {
+            position: relative;
+            overflow: hidden;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;            /* Banner and overlay styles */
+            .hero-header {
+                position: relative;
+                width: 100%;
+                min-height: 60vh;
+                overflow: hidden;
+            }
+            .hero-banner {
+                position: relative;
+                width: 100%;
+                height: 60vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .hero-banner img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                filter: brightness(0.6);
+            }
+            .hero-overlay {
+                position: absolute;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(0,0,0,0.5);
+            }
+            .hero-content {
+                position: absolute;
+                top: 50%; left: 50%;
+                transform: translate(-50%, -50%);
+                color: #fff;
+                text-align: center;
+            }
+            .hero-content h1 {
+                font-size: 4rem;
+                font-weight: 700;
+                margin: 0 0 16px 0;
+            }
+            .hero-content p {
+                font-size: 1.5rem;
+                color: #e0e0e0;
+            }
+            
+            /* Navigation styles */
             .main-nav {
-                padding: 10px 5px;
+                position: sticky;
+                top: 0;
+                width: 100%;
+                background: rgba(24,24,24,0.95);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 32px;
+                z-index: 100;
             }
             .nav-left {
-                gap: 8px;
+                display: flex;
+                align-items: center;
+                gap: 24px;
+            }
+            .site-title {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: #fff;
+                margin-right: 24px;
             }
             .main-nav a {
-                margin: 0 5px;
-                font-size: 0.9rem;
+                color: #fff;
+                text-decoration: none;
+                font-weight: 500;
+                font-size: 1.1rem;
+                margin-right: 12px;
+                transition: color 0.2s;
+            }
+            .main-nav a:hover {
+                color: #60a5fa;
+            }
+            .nav-right {
+                display: flex;
+                align-items: center;
+                gap: 18px;
             }
             .nav-right a {
-                font-size: 1.1rem;
+                color: #fff;
+                font-size: 1.3rem;
+                transition: color 0.2s;
             }
-            section {
-                padding: 20px 15px;
-                margin: 20px 10px;
+            .nav-right a:hover {
+                color: #60a5fa;
             }
-            h2 { font-size: 1.5rem; }
-            h3 { font-size: 1rem; }
+            
+            /* Main content overlay effect */
+            main {
+                position: relative;
+                z-index: 10;
+                background: #181818;
+                margin-top: -120px;
+                border-radius: 18px 18px 0 0;
+                box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+                padding-top: 120px;
+            }
+            @media (max-width: 800px) {
+                .hero-content h1 { font-size: 2.2rem; }
+                .hero-content p { font-size: 1rem; }
+                .main-nav { flex-direction: column; padding: 0 8px; }
+                .nav-left { flex-wrap: wrap; gap: 12px; }
+            }
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--highlight);
+        }
+        .hero-banner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .main-nav {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+        .site-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-right: 40px;
+            color: var(--highlight);
+        }
+        .nav-left a {
+            color: var(--highlight);
+            text-decoration: none;
+            margin-right: 24px;
+            font-weight: 500;
+            position: relative;
+        }
+        .nav-left a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: var(--highlight);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        .nav-left a:hover::after, .nav-left a.active::after {
+            transform: scaleX(1);
+        }
+        .nav-right a {
+            color: var(--highlight);
+            text-decoration: none;
+            margin-left: 18px;
+            font-size: 1.2rem;
+        }
+        .nav-right a:hover {
+            color: var(--muted);
         }
     </style>
 </head>
 <body>
     <header class="hero-header">
-        <img class="hero-banner-img" src="http://googleusercontent.com/file_content/0" alt="Engineering Banner">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Joyal Jojo</h1>
-            <p>Mechanical Engineering Student | Melbourne, Australia</p>
+        <nav class="main-nav">
+            <div class="nav-left">
+                <span class="site-title">Joyal Jojo</span>
+                <a href="#profile">Profile</a>
+                <a href="#education">Education</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#volunteer">Volunteer</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="nav-right">
+                <a href="https://www.linkedin.com/in/joyal-jojo" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="mailto:joyaljojo.connect@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+                <a href="tel:0449959100"><i class="fa-solid fa-phone"></i></a>
+                <!-- Add more icons as needed -->
+            </div>
+        </nav>
+        <div class="hero-banner">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80" alt="Engineering Banner">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>Joyal Jojo</h1>
+                <p>Mechanical Engineering Student | Melbourne, Australia</p>
+            </div>
         </div>
     </header>
-
-    <nav class="main-nav">
-        <div class="nav-left">
-            <span class="site-title">Joyal Jojo</span> <a href="#profile">Profile</a>
-            <a href="#education">Education</a>
-            <a href="#experience">Experience</a>
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#volunteer">Volunteer</a>
-            <a href="#certifications">Certifications</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <div class="nav-right">
-            <a href="https://www.linkedin.com/in/joyal-jojo" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="mailto:joyaljojo.connect@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-            <a href="tel:0449959100"><i class="fa-solid fa-phone"></i></a>
-        </div>
-    </nav>
-
     <main>
         <section id="profile">
             <h2>Profile</h2>
@@ -450,6 +521,7 @@
                 <li><i class="fa-solid fa-diagram-project"></i> Project Management</li>
                 <li><i class="fa-solid fa-user-tie"></i> Leadership</li>
                 <li><i class="fa-solid fa-chart-pie"></i> Customer Analytics</li>
+    
             </ul>
         </section>
 
@@ -497,33 +569,11 @@
     </footer>
     <script>
         // Navigation active link highlight
-        const navLinks = document.querySelectorAll('.main-nav a'); // Target main-nav links
+        const navLinks = document.querySelectorAll('nav a');
         navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                // Remove 'active' from all links
+            link.addEventListener('click', () => {
                 navLinks.forEach(lnk => lnk.classList.remove('active'));
-                // Add 'active' to the clicked link
-                this.classList.add('active');
-            });
-        });
-
-        // Optional: Highlight active nav link on scroll
-        const sections = document.querySelectorAll('section');
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop - 150) { // -150px offset to activate sooner
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.href.includes(current)) {
-                    link.classList.add('active');
-                }
+                link.classList.add('active');
             });
         });
     </script>

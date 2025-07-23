@@ -151,6 +151,49 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahom
   }
 }
 
+/* General links */
+a {
+  color: inherit; /* Uses your current text color */
+  text-decoration: underline;
+  transition: none;
+}
+
+/* Remove special hover/focus/active styles for all links */
+a:hover,
+a:focus,
+a:active {
+  color: inherit;
+  text-decoration: underline;
+  border-bottom: none;
+  background: none;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Optional: If you want to keep icons colored, use this for icon-only links */
+.nav-icons a i {
+  color: var(--highlight);
+}
+
+/* Remove any border color changes on nav links */
+.nav-links a,
+.contact-links a,
+.resume-link {
+  color: inherit;
+  text-decoration: underline;
+  border-bottom: none !important;
+}
+
+.nav-links a:hover,
+.contact-links a:hover,
+.resume-link:hover {
+  color: inherit;
+  text-decoration: underline;
+  border-bottom: none !important;
+  background: none;
+}
+
+
 @keyframes fadein {
   from { opacity: 0; }
   to { opacity: 1; }

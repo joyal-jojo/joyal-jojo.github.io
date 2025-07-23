@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,393 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joyal Jojo - Mechanical Engineering Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        :root {
-            --bg: #181818;
-            --card: #222;
-            --text: #f5f5f5;
-            --muted: #bdbdbd;
-            --accent: #111;
-            --highlight: #fff;
-            --nav: #1a1a1a;
-        }
-        body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            min-height: 100vh;
-        }
-        header {
-            text-align: center;
-            padding: 48px 0 24px 0;
-            background: var(--nav);
-            color: var(--highlight);
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.8rem;
-            font-weight: 700;
-        }
-        header p {
-            font-size: 1.15rem;
-            color: var(--muted);
-            margin: 12px 0 0 0;
-        }
-        .info-row {
-            justify-content: center;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 18px;
-            margin-bottom: 10px;
-            color: var(--muted);
-            font-size: 1rem;
-        }
-        .info-row span, .info-row a {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--muted);
-        }
-        nav {
-            background: var(--nav);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0 0 0 0;
-            font-size: 1.2rem;
-            border-bottom: 1px solid #222;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        nav a {
-            color: var(--highlight);
-            text-decoration: none;
-            font-weight: 600;
-            margin: 0 18px;
-            padding: 18px 0 14px 0;
-            border-bottom: 3px solid transparent;
-            transition: border-color 0.2s, color 0.2s;
-        }
-        nav a.active, nav a:hover {
-            border-bottom: 3px solid var(--highlight);
-            color: var(--highlight);
-        }
-        section {
-            max-width: 700px;
-            margin: 48px auto;
-            background: var(--card);
-            padding: 40px 36px;
-            border-radius: 10px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-        }
-        h2 {
-            color: var(--highlight);
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 18px;
-            margin-top: 0;
-        }
-        h3 {
-            color: var(--highlight);
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-top: 24px;
-            margin-bottom: 8px;
-        }
-        ul {
-            margin-top: 10px;
-            list-style-type: disc;
-            padding-left: 22px;
-            color: var(--text);
-        }
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 12px;
-        }
-        .skills-list li {
-            background: var(--accent);
-            color: var(--highlight);
-            border-radius: 6px;
-            padding: 7px 16px;
-            font-weight: 500;
-            list-style: none;
-            font-size: 1rem;
-        }
-        .contact-links a {
-            color: var(--highlight);
-            text-decoration: none;
-            margin-right: 18px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-        }
-        .contact-links a:hover {
-            text-decoration: underline;
-            color: var(--muted);
-        }
-        .contact-links i {
-            margin-right: 6px;
-        }
-        .resume-link {
-            color: var(--highlight);
-            font-weight: 600;
-            text-decoration: none;
-        }
-        .resume-link:hover {
-            text-decoration: underline;
-            color: var(--muted);
-        }
-        footer {
-            text-align: center;
-            font-size: 1rem;
-            color: var(--muted);
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid var(--accent);
-            background: var(--nav);
-        }
-        @media (max-width: 600px) {
-            nav a { margin: 0 10px; font-size: 1rem; }
-            section { padding: 18px; margin: 15px 6px; }
-            .skills-list { gap: 8px; }
-            .info-row { flex-direction: column; gap: 6px; }
-            header h1 { font-size: 2rem; }
-            h2 { font-size: 1.3rem; }
-        }
-        .hero-header {
-            position: relative;
-            overflow: hidden;
-            height: 60vh;
-            display: flex;
-            flex-direction: column;            /* Banner and overlay styles */
-            .hero-header {
-                position: relative;
-                width: 100%;
-                min-height: 60vh;
-                overflow: hidden;
-            }
-            .hero-banner {
-                position: relative;
-                width: 100%;
-                height: 60vh;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .hero-banner img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                filter: brightness(0.6);
-            }
-            .hero-overlay {
-                position: absolute;
-                top: 0; left: 0; right: 0; bottom: 0;
-                background: rgba(0,0,0,0.5);
-            }
-            .hero-content {
-                position: absolute;
-                top: 50%; left: 50%;
-                transform: translate(-50%, -50%);
-                color: #fff;
-                text-align: center;
-            }
-            .hero-content h1 {
-                font-size: 4rem;
-                font-weight: 700;
-                margin: 0 0 16px 0;
-            }
-            .hero-content p {
-                font-size: 1.5rem;
-                color: #e0e0e0;
-            }
-            
-            /* Navigation styles */
-            .main-nav {
-                position: sticky;
-                top: 0;
-                width: 100%;
-                background: rgba(24,24,24,0.95);
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 0 32px;
-                z-index: 100;
-            }
-            .nav-left {
-                display: flex;
-                align-items: center;
-                gap: 24px;
-            }
-            .site-title {
-                font-size: 1.5rem;
-                font-weight: 700;
-                color: #fff;
-                margin-right: 24px;
-            }
-            .main-nav a {
-                color: #fff;
-                text-decoration: none;
-                font-weight: 500;
-                font-size: 1.1rem;
-                margin-right: 12px;
-                transition: color 0.2s;
-            }
-            .main-nav a:hover {
-                color: #60a5fa;
-            }
-            .nav-right {
-                display: flex;
-                align-items: center;
-                gap: 18px;
-            }
-            .nav-right a {
-                color: #fff;
-                font-size: 1.3rem;
-                transition: color 0.2s;
-            }
-            .nav-right a:hover {
-                color: #60a5fa;
-            }
-            
-            /* Main content overlay effect */
-            main {
-                position: relative;
-                z-index: 10;
-                background: #181818;
-                margin-top: -120px;
-                border-radius: 18px 18px 0 0;
-                box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-                padding-top: 120px;
-            }
-            @media (max-width: 800px) {
-                .hero-content h1 { font-size: 2.2rem; }
-                .hero-content p { font-size: 1rem; }
-                .main-nav { flex-direction: column; padding: 0 8px; }
-                .nav-left { flex-wrap: wrap; gap: 12px; }
-            }
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--highlight);
-        }
-        .hero-banner {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        .hero-banner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.7;
-        }
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-        .main-nav {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .nav-left {
-            display: flex;
-            align-items: center;
-        }
-        .site-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-right: 40px;
-            color: var(--highlight);
-        }
-        .nav-left a {
-            color: var(--highlight);
-            text-decoration: none;
-            margin-right: 24px;
-            font-weight: 500;
-            position: relative;
-        }
-        .nav-left a::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background: var(--highlight);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-        .nav-left a:hover::after, .nav-left a.active::after {
-            transform: scaleX(1);
-        }
-        .nav-right a {
-            color: var(--highlight);
-            text-decoration: none;
-            margin-left: 18px;
-            font-size: 1.2rem;
-        }
-        .nav-right a:hover {
-            color: var(--muted);
-        }
-    </style>
-</head>
+    <link rel="stylesheet" href="style.css"> </head>
 <body>
     <header class="hero-header">
-        <nav class="main-nav">
-            <div class="nav-left">
-                <span class="site-title">Joyal Jojo</span>
-                <a href="#profile">Profile</a>
-                <a href="#education">Education</a>
-                <a href="#experience">Experience</a>
-                <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
-                <a href="#volunteer">Volunteer</a>
-                <a href="#certifications">Certifications</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <div class="nav-right">
-                <a href="https://www.linkedin.com/in/joyal-jojo" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="mailto:joyaljojo.connect@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-                <a href="tel:0449959100"><i class="fa-solid fa-phone"></i></a>
-                <!-- Add more icons as needed -->
-            </div>
-        </nav>
-        <div class="hero-banner">
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80" alt="Engineering Banner">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <h1>Joyal Jojo</h1>
-                <p>Mechanical Engineering Student | Melbourne, Australia</p>
-            </div>
+        <img class="hero-banner-img" src="http://googleusercontent.com/file_content/0" alt="Engineering Banner">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Joyal Jojo</h1>
+            <p>Mechanical Engineering Student | Melbourne, Australia</p>
         </div>
     </header>
+
+    <nav class="main-nav">
+        <div class="nav-left">
+            <a href="#profile">Profile</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#volunteer">Volunteer</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-right">
+            <a href="https://www.linkedin.com/in/joyal-jojo" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="mailto:joyaljojo.connect@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+            <a href="tel:0449959100"><i class="fa-solid fa-phone"></i></a>
+        </div>
+    </nav>
+
     <main>
         <section id="profile">
             <h2>Profile</h2>
@@ -521,7 +162,6 @@
                 <li><i class="fa-solid fa-diagram-project"></i> Project Management</li>
                 <li><i class="fa-solid fa-user-tie"></i> Leadership</li>
                 <li><i class="fa-solid fa-chart-pie"></i> Customer Analytics</li>
-    
             </ul>
         </section>
 
@@ -569,11 +209,34 @@
     </footer>
     <script>
         // Navigation active link highlight
-        const navLinks = document.querySelectorAll('nav a');
+        const navLinks = document.querySelectorAll('.main-nav a'); // Target main-nav links
         navLinks.forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', function() {
+                // Remove 'active' from all links
                 navLinks.forEach(lnk => lnk.classList.remove('active'));
-                link.classList.add('active');
+                // Add 'active' to the clicked link
+                this.classList.add('active');
+            });
+        });
+
+        // Optional: Highlight active nav link on scroll
+        const sections = document.querySelectorAll('section');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 150) { // -150px offset to activate sooner
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                // Only add active class if the link has an href and it matches a section ID
+                if (link.href && link.href.includes(current) && current !== '') {
+                    link.classList.add('active');
+                }
             });
         });
     </script>

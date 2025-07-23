@@ -1,581 +1,203 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joyal Jojo - Mechanical Engineering Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        :root {
-            --bg: #181818;
-            --card: #222;
-            --text: #f5f5f5;
-            --muted: #bdbdbd;
-            --accent: #111;
-            --highlight: #fff;
-            --nav: #1a1a1a;
-        }
-        body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            min-height: 100vh;
-        }
-        header {
-            text-align: center;
-            padding: 48px 0 24px 0;
-            background: var(--nav);
-            color: var(--highlight);
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.8rem;
-            font-weight: 700;
-        }
-        header p {
-            font-size: 1.15rem;
-            color: var(--muted);
-            margin: 12px 0 0 0;
-        }
-        .info-row {
-            justify-content: center;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 18px;
-            margin-bottom: 10px;
-            color: var(--muted);
-            font-size: 1rem;
-        }
-        .info-row span, .info-row a {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--muted);
-        }
-        nav {
-            background: var(--nav);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0 0 0 0;
-            font-size: 1.2rem;
-            border-bottom: 1px solid #222;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        nav a {
-            color: var(--highlight);
-            text-decoration: none;
-            font-weight: 600;
-            margin: 0 18px;
-            padding: 18px 0 14px 0;
-            border-bottom: 3px solid transparent;
-            transition: border-color 0.2s, color 0.2s;
-        }
-        nav a.active, nav a:hover {
-            border-bottom: 3px solid var(--highlight);
-            color: var(--highlight);
-        }
-        section {
-            max-width: 700px;
-            margin: 48px auto;
-            background: var(--card);
-            padding: 40px 36px;
-            border-radius: 10px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-        }
-        h2 {
-            color: var(--highlight);
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 18px;
-            margin-top: 0;
-        }
-        h3 {
-            color: var(--highlight);
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-top: 24px;
-            margin-bottom: 8px;
-        }
-        ul {
-            margin-top: 10px;
-            list-style-type: disc;
-            padding-left: 22px;
-            color: var(--text);
-        }
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 12px;
-        }
-        .skills-list li {
-            background: var(--accent);
-            color: var(--highlight);
-            border-radius: 6px;
-            padding: 7px 16px;
-            font-weight: 500;
-            list-style: none;
-            font-size: 1rem;
-        }
-        .contact-links a {
-            color: var(--highlight);
-            text-decoration: none;
-            margin-right: 18px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-        }
-        .contact-links a:hover {
-            text-decoration: underline;
-            color: var(--muted);
-        }
-        .contact-links i {
-            margin-right: 6px;
-        }
-        .resume-link {
-            color: var(--highlight);
-            font-weight: 600;
-            text-decoration: none;
-        }
-        .resume-link:hover {
-            text-decoration: underline;
-            color: var(--muted);
-        }
-        footer {
-            text-align: center;
-            font-size: 1rem;
-            color: var(--muted);
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid var(--accent);
-            background: var(--nav);
-        }
-        @media (max-width: 600px) {
-            nav a { margin: 0 10px; font-size: 1rem; }
-            section { padding: 18px; margin: 15px 6px; }
-            .skills-list { gap: 8px; }
-            .info-row { flex-direction: column; gap: 6px; }
-            header h1 { font-size: 2rem; }
-            h2 { font-size: 1.3rem; }
-        }
-        .hero-header {
-            position: relative;
-            overflow: hidden;
-            height: 60vh;
-            display: flex;
-            flex-direction: column;            /* Banner and overlay styles */
-            .hero-header {
-                position: relative;
-                width: 100%;
-                min-height: 60vh;
-                overflow: hidden;
-            }
-            .hero-banner {
-                position: relative;
-                width: 100%;
-                height: 60vh;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .hero-banner img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                filter: brightness(0.6);
-            }
-            .hero-overlay {
-                position: absolute;
-                top: 0; left: 0; right: 0; bottom: 0;
-                background: rgba(0,0,0,0.5);
-            }
-            .hero-content {
-                position: absolute;
-                top: 50%; left: 50%;
-                transform: translate(-50%, -50%);
-                color: #fff;
-                text-align: center;
-            }
-            .hero-content h1 {
-                font-size: 4rem;
-                font-weight: 700;
-                margin: 0 0 16px 0;
-            }
-            .hero-content p {
-                font-size: 1.5rem;
-                color: #e0e0e0;
-            }
-            
-            /* Navigation styles */
-            .main-nav {
-                position: sticky;
-                top: 0;
-                width: 100%;
-                background: rgba(24,24,24,0.95);
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 0 32px;
-                z-index: 100;
-            }
-            .nav-left {
-                display: flex;
-                align-items: center;
-                gap: 24px;
-            }
-            .site-title {
-                font-size: 1.5rem;
-                font-weight: 700;
-                color: #fff;
-                margin-right: 24px;
-            }
-            .main-nav a {
-                color: #fff;
-                text-decoration: none;
-                font-weight: 500;
-                font-size: 1.1rem;
-                margin-right: 12px;
-                transition: color 0.2s;
-            }
-            .main-nav a:hover {
-                color: #60a5fa;
-            }
-            .nav-right {
-                display: flex;
-                align-items: center;
-                gap: 18px;
-            }
-            .nav-right a {
-                color: #fff;
-                font-size: 1.3rem;
-                transition: color 0.2s;
-            }
-            .nav-right a:hover {
-                color: #60a5fa;
-            }
-            
-            /* Main content overlay effect */
-            main {
-                position: relative;
-                z-index: 10;
-                background: #181818;
-                margin-top: -120px;
-                border-radius: 18px 18px 0 0;
-                box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-                padding-top: 120px;
-            }
-            @media (max-width: 800px) {
-                .hero-content h1 { font-size: 2.2rem; }
-                .hero-content p { font-size: 1rem; }
-                .main-nav { flex-direction: column; padding: 0 8px; }
-                .nav-left { flex-wrap: wrap; gap: 12px; }
-            }
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--highlight);
-        }
-        .hero-banner {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        .hero-banner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.7;
-        }
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-        .main-nav {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .nav-left {
-            display: flex;
-            align-items: center;
-        }
-        .site-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-right: 40px;
-            color: var(--highlight);
-        }
-        .nav-left a {
-            color: var(--highlight);
-            text-decoration: none;
-            margin-right: 24px;
-            font-weight: 500;
-            position: relative;
-        }
-        .nav-left a::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background: var(--highlight);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-        .nav-left a:hover::after, .nav-left a.active::after {
-            transform: scaleX(1);
-        }
-        .nav-right a {
-            color: var(--highlight);
-            text-decoration: none;
-            margin-left: 18px;
-            font-size: 1.2rem;
-        }
-        .nav-right a:hover {
-            color: var(--muted);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joyal Jojo - Mechanical Engineering Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="hero-header">
-        <nav class="main-nav">
-            <div class="nav-left">
-                <span class="site-title">Joyal Jojo</span>
-                <a href="#profile">Profile</a>
-                <a href="#education">Education</a>
-                <a href="#experience">Experience</a>
-                <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
-                <a href="#volunteer">Volunteer</a>
-                <a href="#certifications">Certifications</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <div class="nav-right">
-                <a href="https://www.linkedin.com/in/joyal-jojo" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="mailto:joyaljojo.connect@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-                <a href="tel:0449959100"><i class="fa-solid fa-phone"></i></a>
-                <!-- Add more icons as needed -->
-            </div>
-        </nav>
-        <div class="hero-banner">
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80" alt="Engineering Banner">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <h1>Joyal Jojo</h1>
-                <p>Mechanical Engineering Student | Melbourne, Australia</p>
-            </div>
+  <header class="hero-header">
+    <nav class="main-nav">
+      <div class="site-title">Joyal Jojo</div>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Open navigation menu">
+      <label for="nav-toggle" class="nav-toggle-label">
+        <span></span>
+      </label>
+      <div class="nav-links">
+        <a href="#profile">Profile</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#volunteer">Volunteer</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+        <div class="nav-icons">
+          <a href="https://www.linkedin.com/in/joyal-jojo" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="mailto:joyaljojo.connect@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+          <a href="tel:0449959100" aria-label="Call"><i class="fa-solid fa-phone"></i></a>
         </div>
-    </header>
-    <main>
-        <section id="profile">
-            <h2>Profile</h2>
-            <p>
-                Mechanical Engineering student at the University of Melbourne with hands-on experience in CAD, product prototyping, and interdisciplinary collaboration. A versatile and decisive thinker with a focus on efficiency, open-minded teamwork, and a strong foundation in mechanical systems and engineering economics. Quick to learn new tools and eager to contribute to next-generation product development.
-            </p>
-        </section>
-
-        <div class="divider"></div>
-
-        <section id="education">
-            <h2>Education</h2>
-            <h3>Master’s in Mechanical Engineering <span style="color:var(--muted);font-size:0.95em;">Feb 2024–Present</span></h3>
-            <p>The University of Melbourne, Victoria, Australia</p>
-            <ul>
-                <li>Student engineer for developing a 10W wind turbine at the renewable energy students club.</li>
-                <li>Advanced Solid Mechanics – Bicycle Frame Design (2025): Designed a structurally efficient bicycle frame using SolidWorks and AutoCAD; learned AutoCAD independently in 3 days to generate production-ready drawings.</li>
-                <li>Project Manager and Engineer for Development of a Machine Learning-Based Equation of State for Real Gas Mixtures in collaboration with Future Energy Exports Australia (ongoing).</li>
-            </ul>
-            <h3>Bachelor’s in Mechanical Engineering <span style="color:var(--muted);font-size:0.95em;">Jul 2019–Apr 2023</span></h3>
-            <p>National Institute of Technology Calicut, Kerala, India<br>CGPA 7.9/10</p>
-            <ul>
-                <li>Conducted research to determine failure pressure of metallic pipelines using Artificial Neural Network and Finite element analysis.</li>
-            </ul>
-            <h3>Higher Secondary Education <span style="color:var(--muted);font-size:0.95em;">Jul 2017–Apr 2018</span></h3>
-            <p>Christu Jyothi Public School, Kerala, India</p>
-            <ul>
-                <li>Top scorer in Mathematics, Physics and English among district level.</li>
-                <li>94 percent overall score (CBSE Board).</li>
-            </ul>
-        </section>
-
-        <div class="divider"></div>
-
-        <section id="experience">
-            <h2>Experience</h2>
-            <h3>GHD Group Engineering Consulting Virtual Experience Program on Forage <span style="color:var(--muted);font-size:0.95em;">Aug 2024</span></h3>
-            <p>Melbourne, Victoria, Australia</p>
-            <ul>
-                <li>Conducted a comprehensive options analysis for various rail alignments, including cost-benefit assessments, stakeholder impact evaluations, and environmental considerations.</li>
-                <li>Presented findings and recommendations in a technical memorandum to the client, supporting informed decision-making.</li>
-            </ul>
-            <h3>Technical Consultant <span style="color:var(--muted);font-size:0.95em;">Jun 2023–Sep 2023</span></h3>
-            <p>Price Waterhouse Coopers India (PWC India), Bangalore</p>
-            <ul>
-                <li>Shadowed and assisted the Assistant Manager Advisory - Business Transformation section.</li>
-                <li>Developed familiarity with Workday software and its implementation processes within the organization.</li>
-            </ul>
-            <h3>Engineering Intern <span style="color:var(--muted);font-size:0.95em;">May 2022–Jun 2022</span></h3>
-            <p>Hindustan Aeronautical Ltd, Bangalore, India</p>
-            <ul>
-                <li>Took initiative to shadow senior engineers in the Mirage 2000 fighter jet overhauls, gaining insights into structural diagnostics and fluid system troubleshooting.</li>
-                <li>Structural loads testing: Measured strain gauge responses to track the wing load against the wing strength envelope.</li>
-                <li>Ground vibrations testing: Validated structural frequencies and mode shapes with the Finite element model.</li>
-            </ul>
-            <h3>Customer Relations and Sales <span style="color:var(--muted);font-size:0.95em;">Apr 2019–Apr 2022</span></h3>
-            <p>HP Gas, Kerala, India</p>
-            <ul>
-                <li>Managed over 5000 customer interactions monthly, providing exceptional service with a satisfaction score of 92%.</li>
-                <li>Navigated customer issues and handled cashflows, ensuring a positive customer experience.</li>
-                <li>Collaborated with a team to achieve a milestone of 2000 new customer registrations in 2 months.</li>
-            </ul>
-        </section>
-
-        <div class="divider"></div>
-
-        <section id="projects">
-            <h2>Academic Projects</h2>
-            <div class="project">
-                <h3>VIVA Energy Geelong Plant - LPG Pressure Vessel Integrity Assessment</h3>
-                <ul>
-                    <li>Conducted Finite element analysis to evaluate the structural integrity of a pressure vessel under seismic conditions and operational loads, ensuring compliance with AS 1210-2010, AS1170 standards.</li>
-                    <li>Determined minimum acceptable thicknesses, safety factors, and lifetime predictions, recommending retrofitting and corrosion mitigation strategies to enhance safety margins and operational longevity.</li>
-                </ul>
-            </div>
-            <div class="project">
-                <h3>Prusa 3D - Redesign and Fabrication of 3D Printer Parts</h3>
-                <ul>
-                    <li>Redesigned and Fabricated 3D Printer Components for high-volume production using CNC machining, injection moulding, polyurethane casting, and sheet metal fabrication.</li>
-                    <li>Conducted critical design modifications, incorporating tolerance and inspection standards to ensure precision and quality, improving its functional integrity.</li>
-                    <li>Analysis of fabrication time, scrap rates, and sustainability for multiple production techniques, recommending cost-effective and scalable solutions.</li>
-                </ul>
-            </div>
-            <div class="project">
-                <h3>Advanced Solid Mechanics – Bicycle Frame Design</h3>
-                <ul>
-                    <li>Designed efficient frame using SolidWorks and AutoCAD; learned AutoCAD in 3 days for production drawings.</li>
-                </ul>
-            </div>
-            <div class="project">
-                <h3>Development of a Machine Learning-Based Equation of State for Real Gas Mixtures</h3>
-                <ul>
-                    <li>Project Manager and Engineer using ANN with TensorFlow and AutoML for gas mixture predictions (Future Energy Exports Australia, ongoing).</li>
-                </ul>
-            </div>
-            <div class="project">
-                <h3>Failure Pressure Determination of Metallic Pipelines</h3>
-                <ul>
-                    <li>Research using Artificial Neural Networks and Finite Element Analysis to predict pipeline failures.</li>
-                </ul>
-            </div>
-        </section>
-
-        <div class="divider"></div>
-
-        <section id="skills">
-            <h2>Skills</h2>
-            <ul class="skills-list">
-                <li><i class="fa-solid fa-cube"></i> SolidWorks</li>
-                <li><i class="fa-solid fa-drafting-compass"></i> AutoCAD</li>
-                <li><i class="fa-solid fa-industry"></i> Siemens NX (in progress)</li>
-                <li><i class="fa-solid fa-chart-line"></i> ABAQUS</li>
-                <li><i class="fa-brands fa-python"></i> Python</li>
-                <li><i class="fa-solid fa-project-diagram"></i> MATLAB</li>
-                <li><i class="fa-solid fa-file"></i> MS Suite</li>
-                <li><i class="fa-solid fa-code"></i> C++</li>
-                <li><i class="fa-solid fa-gears"></i> Mechanical Design</li>
-                <li><i class="fa-solid fa-bolt"></i> FEA</li>
-                <li><i class="fa-solid fa-cubes"></i> Product Prototyping</li>
-                <li><i class="fa-solid fa-brain"></i> ANN with TensorFlow and AutoML</li>
-                <li><i class="fa-solid fa-user-check"></i> Fast Learner</li>
-                <li><i class="fa-solid fa-lightbulb"></i> Proactive</li>
-                <li><i class="fa-solid fa-list-check"></i> Detail-Oriented</li>
-                <li><i class="fa-solid fa-comments"></i> Strong Communication</li>
-                <li><i class="fa-solid fa-users"></i> Collaboration</li>
-                <li><i class="fa-solid fa-diagram-project"></i> Project Management</li>
-                <li><i class="fa-solid fa-user-tie"></i> Leadership</li>
-                <li><i class="fa-solid fa-chart-pie"></i> Customer Analytics</li>
-    
-            </ul>
-        </section>
-
-        <div class="divider"></div>
-
-        <section id="volunteer">
-            <h2>Volunteer Activity</h2>
-            <h3>President, Bala-jana-sakyam (Student body)</h3>
-            <ul>
-                <li>Led a team of 100 student volunteers in organizing community well-being events like higher education awareness programs, food security initiatives for disadvantaged people etc.</li>
-                <li>Increased student participation in well-being programs by 25% through effective outreach strategies.</li>
-            </ul>
-        </section>
-
-        <div class="divider"></div>
-
-        <section id="certifications">
-            <h2>Professional Certifications & Achievements</h2>
-            <ul>
-                <li>Applications in Engineering Mechanics, Georgia Institute of Technology</li>
-                <li>Machine Design, Georgia Institute of Technology</li>
-                <li>Customer Analytics, University of Pennsylvania</li>
-                <li>AI For Everyone by DeepLearning.AI</li>
-            </ul>
-        </section>
-
-        <div class="divider"></div>
-
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Available for opportunities and collaborations in mechanical engineering.</p>
-            <div class="contact-links">
-                <a href="mailto:joyaljojo.connect@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
-                <a href="tel:0449959100"><i class="fa-solid fa-phone"></i> 0449959100</a>
-                <a href="https://www.linkedin.com/in/joyal-jojo" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-            </div>
-            <p style="margin-top:18px;">
-                <a class="resume-link" href="resume.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i> Download Resume (PDF)</a>
-            </p>
-            <p style="color:var(--muted);margin-top:10px;">Referees available upon request.</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 Joyal Jojo. All rights reserved.</p>
-    </footer>
-    <script>
-        // Navigation active link highlight
-        const navLinks = document.querySelectorAll('nav a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.forEach(lnk => lnk.classList.remove('active'));
-                link.classList.add('active');
-            });
-        });
-    </script>
+      </div>
+    </nav>
+    <div class="hero-banner">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80" alt="Engineering Banner">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Joyal Jojo</h1>
+        <p>Mechanical Engineering Student | Melbourne, Australia</p>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section id="profile">
+      <h2>Profile</h2>
+      <p>
+        Mechanical Engineering student at the University of Melbourne with hands-on experience in CAD, product prototyping, and interdisciplinary collaboration. A versatile and decisive thinker with a focus on efficiency, open-minded teamwork, and a strong foundation in mechanical systems and engineering economics. Quick to learn new tools and eager to contribute to next-generation product development.
+      </p>
+    </section>
+    <hr>
+    <section id="education">
+      <h2>Education</h2>
+      <h3>Master’s in Mechanical Engineering <span class="edu-date">Feb 2024–Present</span></h3>
+      <p>The University of Melbourne, Victoria, Australia</p>
+      <ul>
+        <li>Student engineer for developing a 10W wind turbine at the renewable energy students club.</li>
+        <li>Advanced Solid Mechanics – Bicycle Frame Design (2025): Designed a structurally efficient bicycle frame using SolidWorks and AutoCAD; learned AutoCAD independently in 3 days to generate production-ready drawings.</li>
+        <li>Project Manager and Engineer for Development of a Machine Learning-Based Equation of State for Real Gas Mixtures in collaboration with Future Energy Exports Australia (ongoing).</li>
+      </ul>
+      <h3>Bachelor’s in Mechanical Engineering <span class="edu-date">Jul 2019–Apr 2023</span></h3>
+      <p>National Institute of Technology Calicut, Kerala, India<br>CGPA 7.9/10</p>
+      <ul>
+        <li>Conducted research to determine failure pressure of metallic pipelines using Artificial Neural Network and Finite element analysis.</li>
+      </ul>
+      <h3>Higher Secondary Education <span class="edu-date">Jul 2017–Apr 2018</span></h3>
+      <p>Christu Jyothi Public School, Kerala, India</p>
+      <ul>
+        <li>Top scorer in Mathematics, Physics and English among district level.</li>
+        <li>94 percent overall score (CBSE Board).</li>
+      </ul>
+    </section>
+    <hr>
+    <section id="experience">
+      <h2>Experience</h2>
+      <h3>GHD Group Engineering Consulting Virtual Experience Program on Forage <span class="edu-date">Aug 2024</span></h3>
+      <p>Melbourne, Victoria, Australia</p>
+      <ul>
+        <li>Conducted a comprehensive options analysis for various rail alignments, including cost-benefit assessments, stakeholder impact evaluations, and environmental considerations.</li>
+        <li>Presented findings and recommendations in a technical memorandum to the client, supporting informed decision-making.</li>
+      </ul>
+      <h3>Technical Consultant <span class="edu-date">Jun 2023–Sep 2023</span></h3>
+      <p>Price Waterhouse Coopers India (PWC India), Bangalore</p>
+      <ul>
+        <li>Shadowed and assisted the Assistant Manager Advisory - Business Transformation section.</li>
+        <li>Developed familiarity with Workday software and its implementation processes within the organization.</li>
+      </ul>
+      <h3>Engineering Intern <span class="edu-date">May 2022–Jun 2022</span></h3>
+      <p>Hindustan Aeronautical Ltd, Bangalore, India</p>
+      <ul>
+        <li>Took initiative to shadow senior engineers in the Mirage 2000 fighter jet overhauls, gaining insights into structural diagnostics and fluid system troubleshooting.</li>
+        <li>Structural loads testing: Measured strain gauge responses to track the wing load against the wing strength envelope.</li>
+        <li>Ground vibrations testing: Validated structural frequencies and mode shapes with the Finite element model.</li>
+      </ul>
+      <h3>Customer Relations and Sales <span class="edu-date">Apr 2019–Apr 2022</span></h3>
+      <p>HP Gas, Kerala, India</p>
+      <ul>
+        <li>Managed over 5000 customer interactions monthly, providing exceptional service with a satisfaction score of 92%.</li>
+        <li>Navigated customer issues and handled cashflows, ensuring a positive customer experience.</li>
+        <li>Collaborated with a team to achieve a milestone of 2000 new customer registrations in 2 months.</li>
+      </ul>
+    </section>
+    <hr>
+    <section id="projects">
+      <h2>Academic Projects</h2>
+      <div class="project">
+        <h3>VIVA Energy Geelong Plant - LPG Pressure Vessel Integrity Assessment</h3>
+        <ul>
+          <li>Conducted Finite element analysis to evaluate the structural integrity of a pressure vessel under seismic conditions and operational loads, ensuring compliance with AS 1210-2010, AS1170 standards.</li>
+          <li>Determined minimum acceptable thicknesses, safety factors, and lifetime predictions, recommending retrofitting and corrosion mitigation strategies to enhance safety margins and operational longevity.</li>
+        </ul>
+      </div>
+      <div class="project">
+        <h3>Prusa 3D - Redesign and Fabrication of 3D Printer Parts</h3>
+        <ul>
+          <li>Redesigned and Fabricated 3D Printer Components for high-volume production using CNC machining, injection moulding, polyurethane casting, and sheet metal fabrication.</li>
+          <li>Conducted critical design modifications, incorporating tolerance and inspection standards to ensure precision and quality, improving its functional integrity.</li>
+          <li>Analysis of fabrication time, scrap rates, and sustainability for multiple production techniques, recommending cost-effective and scalable solutions.</li>
+        </ul>
+      </div>
+      <div class="project">
+        <h3>Advanced Solid Mechanics – Bicycle Frame Design</h3>
+        <ul>
+          <li>Designed efficient frame using SolidWorks and AutoCAD; learned AutoCAD in 3 days for production drawings.</li>
+        </ul>
+      </div>
+      <div class="project">
+        <h3>Development of a Machine Learning-Based Equation of State for Real Gas Mixtures</h3>
+        <ul>
+          <li>Project Manager and Engineer using ANN with TensorFlow and AutoML for gas mixture predictions (Future Energy Exports Australia, ongoing).</li>
+        </ul>
+      </div>
+      <div class="project">
+        <h3>Failure Pressure Determination of Metallic Pipelines</h3>
+        <ul>
+          <li>Research using Artificial Neural Networks and Finite Element Analysis to predict pipeline failures.</li>
+        </ul>
+      </div>
+    </section>
+    <hr>
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul class="skills-list">
+        <li><i class="fa-solid fa-cube"></i> SolidWorks</li>
+        <li><i class="fa-solid fa-drafting-compass"></i> AutoCAD</li>
+        <li><i class="fa-solid fa-industry"></i> Siemens NX (in progress)</li>
+        <li><i class="fa-solid fa-chart-line"></i> ABAQUS</li>
+        <li><i class="fa-brands fa-python"></i> Python</li>
+        <li><i class="fa-solid fa-project-diagram"></i> MATLAB</li>
+        <li><i class="fa-solid fa-file"></i> MS Suite</li>
+        <li><i class="fa-solid fa-code"></i> C++</li>
+        <li><i class="fa-solid fa-gears"></i> Mechanical Design</li>
+        <li><i class="fa-solid fa-bolt"></i> FEA</li>
+        <li><i class="fa-solid fa-cubes"></i> Product Prototyping</li>
+        <li><i class="fa-solid fa-brain"></i> ANN with TensorFlow and AutoML</li>
+        <li><i class="fa-solid fa-user-check"></i> Fast Learner</li>
+        <li><i class="fa-solid fa-lightbulb"></i> Proactive</li>
+        <li><i class="fa-solid fa-list-check"></i> Detail-Oriented</li>
+        <li><i class="fa-solid fa-comments"></i> Strong Communication</li>
+        <li><i class="fa-solid fa-users"></i> Collaboration</li>
+        <li><i class="fa-solid fa-diagram-project"></i> Project Management</li>
+        <li><i class="fa-solid fa-user-tie"></i> Leadership</li>
+        <li><i class="fa-solid fa-chart-pie"></i> Customer Analytics</li>
+      </ul>
+    </section>
+    <hr>
+    <section id="volunteer">
+      <h2>Volunteer Activity</h2>
+      <h3>President, Bala-jana-sakyam (Student body)</h3>
+      <ul>
+        <li>Led a team of 100 student volunteers in organizing community well-being events like higher education awareness programs, food security initiatives for disadvantaged people etc.</li>
+        <li>Increased student participation in well-being programs by 25% through effective outreach strategies.</li>
+      </ul>
+    </section>
+    <hr>
+    <section id="certifications">
+      <h2>Professional Certifications & Achievements</h2>
+      <ul>
+        <li>Applications in Engineering Mechanics, Georgia Institute of Technology</li>
+        <li>Machine Design, Georgia Institute of Technology</li>
+        <li>Customer Analytics, University of Pennsylvania</li>
+        <li>AI For Everyone by DeepLearning.AI</li>
+      </ul>
+    </section>
+    <hr>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Available for opportunities and collaborations in mechanical engineering.</p>
+      <div class="contact-links">
+        <a href="mailto:joyaljojo.connect@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
+        <a href="tel:0449959100"><i class="fa-solid fa-phone"></i> 0449959100</a>
+        <a href="https://www.linkedin.com/in/joyal-jojo" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+      </div>
+      <p style="margin-top:18px;">
+        <a class="resume-link" href="resume.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i> Download Resume (PDF)</a>
+      </p>
+      <p class="referees-info">Referees available upon request.</p>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Joyal Jojo. All rights reserved.</p>
+  </footer>
 </body>
 </html>
